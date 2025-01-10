@@ -1,4 +1,22 @@
-<div>
-  <h1>Weather Data</h1>
-  <button (click)="getWeatherDatas('London')">Get Weather</button>
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input
+      type="text"
+      placeholder="Buscar localização"
+      name="city"
+      [(ngModel)]="initialCityName"
+      />
+
+    <span (click)="onSubmit()">
+      <fa-icon
+        animation="fade"
+        style="--fa-animation-duration: 5s; cursor: pointer;"
+        size="lg"
+        class="search-icon"
+        [icon]="searchIcon"
+      ></fa-icon>
+    </span>
+  </form>
 </div>
+
+<app-weather-card [weatherDatasInput]="weatherData"></app-weather-card>
